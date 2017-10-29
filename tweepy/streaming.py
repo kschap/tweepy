@@ -416,7 +416,7 @@ class Stream(object):
         self.session.params = {'delimited': 'length'}
         if self.running:
             raise TweepError('Stream object already connected!')
-        self.url = '/%s/statuses/sample.json' % STREAM_VERSION
+        self.url = '/%s/statuses/sample.json?tweet_mode=extended' % STREAM_VERSION
         if languages:
             self.session.params['language'] = ','.join(map(str, languages))
         if stall_warnings:
@@ -429,7 +429,7 @@ class Stream(object):
         self.session.headers['Content-type'] = "application/x-www-form-urlencoded"
         if self.running:
             raise TweepError('Stream object already connected!')
-        self.url = '/%s/statuses/filter.json' % STREAM_VERSION
+        self.url = '/%s/statuses/filter.json?tweet_mode=extended' % STREAM_VERSION
         if follow:
             self.body['follow'] = u','.join(follow).encode(encoding)
         if track:
